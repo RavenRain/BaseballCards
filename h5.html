@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+    <link rel="stylesheet" href="cards.css">    
+    
+    </head>
+<body>
+
+<header>
+<h1>A Collection of Crayola Colors</h1>
+</header>
+
+
+<main>
+
+<script>
+
+var images=["card-0.png", "card-1.png", "card-2.png", "card-3.png", "card-4.png", "card-5.png", "card-6.png", "card-7.png", "card-8.png", "card-9.png",
+"card-10.png", "card-11.png", "card-12.png", "card-13.png", "card-14.png", "card-15.png", "card-16.png", "card-17.png", "card-18.png",
+"card-19.png", "card-20.png", "card-21.png", "card-22.png", "card-23.png", "card-24.png"];
+
+var images2=["card-2-0.png", "card-2-1.png", "card-2-2.png", "card-2-3.png", "card-2-4.png", "card-2-5.png", "card-2-6.png", "card-2-7.png", "card-2-8.png", "card-2-9.png",
+"card-2-10.png", "card-2-11.png", "card-2-12.png", "card-2-13.png", "card-2-14.png", "card-2-15.png", "card-2-16.png", "card-2-17.png", "card-2-18.png",
+"card-2-19.png", "card-2-20.png", "card-2-21.png", "card-2-22.png", "card-2-23.png", "card-2-24.png"];
+
+var flip=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+var f=[];
+
+
+function createf(i) {
+    return function() { 
+var im=document.getElementById("img"+i);
+if(flip[i]==0) {
+var start = new Date().getTime();
+  for (var j = 0; j < 1e7; j++) {
+    if ((new Date().getTime() - start) > 500){
+      break;
+    }
+  }
+ im.src=images2[i];
+flip[i]=1;
+}
+else if(flip[i]==1) {
+im.src=images[i];
+flip[i]=0;
+}
+ };
+}
+
+
+function getInput() {
+
+var fl=images.length;
+
+    var src = prompt("Please enter the URL ", "");
+    if (src != null) {
+        images[images.length] =src;
+
+  }
+    var text = prompt("Please enter the stats URL ", "");
+    if (text != null) {
+        images2[images2.length] =text;
+    }
+
+
+var div2 = document.createElement('div');
+div2.className='column';
+div2.id="div2"+images.length-1;
+
+	
+
+var img = document.createElement('img');
+img.src = images[images.length-1];
+img.id="img"+fl;
+
+
+flip[fl]=0;
+
+f[fl] = createf(fl);
+
+	
+img.onclick = f[fl];
+
+div2.appendChild(img);
+
+document.getElementById("div").appendChild(div2)
+
+
+document.body.appendChild(div);
+
+}
+
+
+
+function cr2() {
+var div = document.createElement("div");
+div.className='row';
+div.id="div";
+
+
+for (var i = 0; i < images.length; i++) {
+    f[i] = createf(i);
+}
+
+var imga = document.createElement('img');
+imga.src = images[0];
+imga.id="imga";
+imga.style.display="none";
+
+
+for (var i = 0; i < images.length; i++) {
+
+var div2 = document.createElement('div');
+div2.id="div2"+i;
+div2.className='column';
+var img = document.createElement('img');
+img.src = images[i];
+img.id="img"+i;
+
+img.onclick = f[i];
+
+div2.appendChild(img);
+div2.appendChild(imga);
+
+div.appendChild(div2)
+
+}
+
+document.body.appendChild(div);
+
+
+}
+
+
+cr2(); 
+
+</script>
+<div id="main">
+
+</div>
+
+
+
+<button onclick="getInput()">Add your card</button>
+
+</main>
+    </body>
+</html>
+
