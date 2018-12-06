@@ -1,14 +1,22 @@
 * {
     box-sizing: border-box;
+    background: black;
 }
 
 h1 {
-    color: blue;
+    color: darkgoldenrod;
+    text-align: center;
 }
 
 body {
     margin: 0;
     font-family: Arial;
+}
+
+#cardinfo {
+    color: #ff3399;
+    padding: 25px;
+    margin: 0px 400px 0px 400px;
 }
 
 .header {
@@ -19,7 +27,7 @@ body {
 .row {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 4px;
+    padding: 10px 70px 50px 80px;
 }
 
 .column {
@@ -61,4 +69,12 @@ body {
   margin: 10px;
   padding: 20px;
   font-size: 30px;
+}
+
+.button {
+    color: black;
+    background-color: #8fd8d8;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
 }
